@@ -3,6 +3,7 @@ package wcci.inlineconnect;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 public class Report {
@@ -13,6 +14,8 @@ public class Report {
 
 	private String medicNum;
 	private boolean hasChiefComplaint;
+	
+	@Lob // may need to be BLOB for voice to text
 	private String report;
 
 	private String bloodPressure;
