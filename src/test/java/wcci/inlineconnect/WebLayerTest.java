@@ -58,18 +58,18 @@ public class WebLayerTest {
 				.andExpect(status().isOk())
 				.andExpect(content().contentType("application/json;charset=UTF-8"))
 				.andExpect(content().json("{}"))
-				.andExpect(content().json(mapper.writeValueAsString(report)));
+				.andExpect(content().json(mapper.writeValueAsString(report), true));
 
 	}
 	@Test
-	public void shouldAddRepot() throws Exception {
+	public void shouldAddReport() throws Exception {
 		when(reportRepo.save(any(Report.class))).thenReturn(report);
 		when(reportRepo.findAll()).thenReturn(Collections.singletonList(report));
 		mockMvc.perform(post("/api/reports")
 				.contentType(MediaType.APPLICATION_JSON_UTF8)
 				 .content(mapper.writeValueAsString(report)))
         .andExpect(status().isOk())
-         .andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(report))));
+         .andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(report)), true));
 				
 				
 	}
