@@ -10,10 +10,10 @@ public class Report {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	protected Long id;
 
 	private String medicNum;
-	private boolean hasChiefComplaint;
+	private String chiefComplaint;
 	
 	@Lob // may need to be BLOB for voice to text
 	private String report;
@@ -24,11 +24,13 @@ public class Report {
 	private String respiratoryRate;
 	private String GCS;
 	private String bloodSugar;
+	
+	
 
-	public Report(String medicNum, boolean hasChiefComplaint, String report, String bloodPressure, String heartRate,
+	public Report(String medicNum, String chiefComplaint, String report, String bloodPressure, String heartRate,
 			String spO2, String respiratoryRate, String gCS, String bloodSugar) {
 		this.medicNum = medicNum;
-		this.hasChiefComplaint = hasChiefComplaint;
+		this.chiefComplaint = chiefComplaint;
 		this.report = report;
 		this.bloodPressure = bloodPressure;
 		this.heartRate = heartRate;
@@ -50,8 +52,8 @@ public class Report {
 		return medicNum;
 	}
 
-	public boolean isHasChiefComplaint() {
-		return hasChiefComplaint;
+	public String getChiefComplaint() {
+		return chiefComplaint;
 	}
 
 	public String getReport() {

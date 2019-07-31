@@ -25,7 +25,7 @@ public class JpaWiringTest {
 	
 	@Before
 	public void setup() {
-		report = new Report("1", true, "report field", "blood pressure", "heart rate", "SPO2", "respiratory rate", "GCS", "blood sugar");
+		report = new Report("1", "lll", "report field", "blood pressure", "heart rate", "SPO2", "respiratory rate", "GCS", "blood sugar");
 //				Report(String medicNum, boolean hasChiefComplaint, String report, String bloodPressure, String heartRate,
 //						String spO2, String respiratoryRate, String gCS, String bloodSugar) {
 		reportRepo.save(report);

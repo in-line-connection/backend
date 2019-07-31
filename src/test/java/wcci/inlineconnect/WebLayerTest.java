@@ -36,7 +36,7 @@ public class WebLayerTest {
 
 	@Before
 	public void setup() {
-		report = new Report("1", true, "report field", "blood pressure", "heart rate", "SPO2", "respiratory rate",
+		report = new Report("1","ll0", "report field", "blood pressure", "heart rate", "SPO2", "respiratory rate",
 				"GCS", "blood sugar");
 		mapper = new ObjectMapper();
 	}
