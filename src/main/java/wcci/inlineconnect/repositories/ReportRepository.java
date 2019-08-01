@@ -1,3 +1,4 @@
+package wcci.inlineconnect.repositories;
 //package wcci.inlineconnect;
 //
 //import org.springframework.data.repository.CrudRepository;
