@@ -18,19 +18,11 @@ public class JpaWiringTest {
 	@Autowired
 	private TestEntityManager entityManager;
 	
-	@Autowired
-	private ReportRepository reportRepo;
 	
-	private Report report;
 	
 	@Before
 	public void setup() {
-		report = new Report("1", "lll", "report field", "blood pressure", "heart rate", "SPO2", "respiratory rate", "GCS", "blood sugar");
-//				Report(String medicNum, boolean hasChiefComplaint, String report, String bloodPressure, String heartRate,
-//						String spO2, String respiratoryRate, String gCS, String bloodSugar) {
-		reportRepo.save(report);
-		entityManager.flush();
-		entityManager.clear();
+		
 	}
 	
 	@Test
@@ -38,10 +30,5 @@ public class JpaWiringTest {
 		
 	}
 	
-	@Test
-	public void shouldSaveAndLoadReport() {
-		Report testReport = reportRepo.findById(report.getId()).get();
-		assertThat(testReport, is(report));
-	}
-
+	
 }
