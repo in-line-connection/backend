@@ -5,8 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-import wcci.inlineconnect.Report;
-
 @Entity
 public class TraumaReport extends Report {
 	

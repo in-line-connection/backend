@@ -1,4 +1,4 @@
-package wcci.inlineconnect;
+package wcci.inlineconnect.models;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
