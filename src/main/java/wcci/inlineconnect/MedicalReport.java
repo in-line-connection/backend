@@ -18,7 +18,7 @@ public class MedicalReport extends Report {
 		private String chiefComplaint;
 		
 		@Lob // may need to be BLOB for voice to text
-		private String report;
+		private String narrative;
 
 		private String bloodPressure;
 		private String heartRate;
@@ -29,11 +29,11 @@ public class MedicalReport extends Report {
 		private String cardiacFuction;
 		
 
-		public MedicalReport(String medicNum, String chiefComplaint, String report, String bloodPressure, String heartRate,
+		public MedicalReport(String medicNum, String chiefComplaint, String narrative, String bloodPressure, String heartRate,
 				String spO2, String respiratoryRate, String GCS, String bloodSugar, String cardiacFuction) {
 			this.medicNum = medicNum;
 			this.chiefComplaint = chiefComplaint;
-			this.report = report;
+			this.narrative = narrative;
 			this.bloodPressure = bloodPressure;
 			this.heartRate = heartRate;
 			this.spO2 = spO2;
@@ -59,8 +59,10 @@ public class MedicalReport extends Report {
 			return chiefComplaint;
 		}
 
-		public String getReport() {
-			return report;
+	
+
+		public String getNarrative() {
+			return narrative;
 		}
 
 		public String getBloodPressure() {

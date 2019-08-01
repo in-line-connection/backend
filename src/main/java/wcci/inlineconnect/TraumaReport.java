@@ -5,49 +5,80 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-public class TraumaReport {
+@Entity
+public class TraumaReport extends Report {
 	
-	@Entity
-	public class Report {
-
-		@Id
-		@GeneratedValue
-		private Long id;
-
-		private String medicNum;
-		private String chiefComplaint;
+	@Id
+	@GeneratedValue
+	private Long id;
+	
+	private String medicNum;
+	private String chiefComplaint;
+	
+	@Lob // may need to be BLOB for voice to text
+	private String narrative;
+	private String date;
+	private String bloodPressure;
+	private String heartRate;
+	private String spO2;
+	private String respiratoryRate;
+	private String GCS;
+	private String bloodSugar;
+	
+	public TraumaReport(String medicNum, String chiefComplaint, String narrative,String date, String bloodPressure, String heartRate,
+			String spO2, String respiratoryRate, String GCS, String bloodSugar) {
+		super(medicNum, chiefComplaint, narrative, date);
+		// TODO Auto-generated constructor stub
+		this.bloodPressure = bloodPressure;
+		this.heartRate = heartRate;
+		this.spO2 = spO2;
+		this.respiratoryRate = respiratoryRate;
+		this.GCS = GCS;
+		this.bloodSugar = bloodSugar;
 		
-		@Lob // may need to be BLOB for voice to text
-		private String report;
+	}
+	public TraumaReport() {}
+		
+	
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public String getBloodPressure() {
+		return bloodPressure;
+	}
+	
+	public String getHeartRate() {
+		return heartRate;
+	}
+	
+	public String getSpO2() {
+		return spO2;
+	}
+	
+	public String getRespiratoryRate() {
+		return respiratoryRate;
+	}
+	
+	public String getGCS() {
+		return GCS;
+	}
+	public String getBloodSugar() {
+		return bloodSugar;
+	}
+	
 
-		private String bloodPressure;
-		private String heartRate;
-		private String spO2;
-		private String respiratoryRate;
-		private String GCS;
-		private String bloodSugar;
 		
 
-		public Report(String medicNum, String chiefComplaint, String report, String bloodPressure, String heartRate,
-				String spO2, String respiratoryRate, String gCS, String bloodSugar) {
-			this.medicNum = medicNum;
-			this.chiefComplaint = chiefComplaint;
-			this.report = report;
-			this.bloodPressure = bloodPressure;
-			this.heartRate = heartRate;
-			this.spO2 = spO2;
-			this.respiratoryRate = respiratoryRate;
-			GCS = gCS;
-			this.bloodSugar = bloodSugar;
+		public String getNarrative() {
+			return narrative;
 		}
 		
-		public Report() {
-			
+		public String getDate() {
+			return date;
 		}
-
-		public Long getId() {
-			return id;
-		}
+		
 
 		public String getMedicNum() {
 			return medicNum;
@@ -56,35 +87,6 @@ public class TraumaReport {
 		public String getChiefComplaint() {
 			return chiefComplaint;
 		}
-
-		public String getReport() {
-			return report;
-		}
-
-		public String getBloodPressure() {
-			return bloodPressure;
-		}
-
-		public String getHeartRate() {
-			return heartRate;
-		}
-
-		public String getSpO2() {
-			return spO2;
-		}
-
-		public String getRespiratoryRate() {
-			return respiratoryRate;
-		}
-
-		public String getGCS() {
-			return GCS;
-		}
-
-		public String getBloodSugar() {
-			return bloodSugar;
-		}
-
 		@Override
 		public int hashCode() {
 			final int prime = 31;
@@ -92,7 +94,6 @@ public class TraumaReport {
 			result = prime * result + ((id == null) ? 0 : id.hashCode());
 			return result;
 		}
-
 		@Override
 		public boolean equals(Object obj) {
 			if (this == obj)
@@ -101,7 +102,7 @@ public class TraumaReport {
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
-			Report other = (Report) obj;
+			TraumaReport other = (TraumaReport) obj;
 			if (id == null) {
 				if (other.id != null)
 					return false;
@@ -110,7 +111,10 @@ public class TraumaReport {
 			return true;
 		}
 
+	
+		
+
 	}
 
 
-}
+
