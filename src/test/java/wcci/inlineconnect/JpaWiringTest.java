@@ -1,8 +1,5 @@
 package wcci.inlineconnect;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,8 +14,6 @@ public class JpaWiringTest {
 	
 	@Autowired
 	private TestEntityManager entityManager;
-	
-	
 	
 	@Before
 	public void setup() {

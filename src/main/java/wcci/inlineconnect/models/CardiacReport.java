@@ -2,8 +2,6 @@ package wcci.inlineconnect.models;
 
 import javax.persistence.Entity;
 
-import wcci.inlineconnect.Report;
-
 @Entity
 public class CardiacReport extends Report {
 
