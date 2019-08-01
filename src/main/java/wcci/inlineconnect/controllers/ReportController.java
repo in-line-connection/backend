@@ -1,3 +1,4 @@
+package wcci.inlineconnect.controllers;
 //package wcci.inlineconnect;
 //
 //import org.springframework.beans.factory.annotation.Autowired;

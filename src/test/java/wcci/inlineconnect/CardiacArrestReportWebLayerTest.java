@@ -22,54 +22,53 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import wcci.inlineconnect.controllers.TraumaReportController;
-import wcci.inlineconnect.models.TraumaReport;
-import wcci.inlineconnect.repositories.TraumaReportRepository;
+import wcci.inlineconnect.controllers.CardiacReportController;
+import wcci.inlineconnect.models.CardiacReport;
+import wcci.inlineconnect.repositories.CardiacReportRepository;
 
-@WebMvcTest(TraumaReportController.class)
+@WebMvcTest(CardiacReportController.class)
 @RunWith(SpringRunner.class)
-public class TraumaWebLayerTest {
+public class CardiacArrestReportWebLayerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
 
 	@MockBean
-	private TraumaReportRepository traumaRepo;
+	private CardiacReportRepository cardiacArrestReportRepo;
 
-	private TraumaReport TruamaReport;
+	private CardiacReport cardiacArrestReport;
 	private ObjectMapper mapper;
 
 	@Before
 	public void setup() {
-		TruamaReport = new TraumaReport("1", "MVC", "Report", "07-07-17", "bp", "HR", "spO2", "respRate", "motor skill",
-				"sugar");
+		cardiacArrestReport = new CardiacReport("medicNum", "chief Complaint", "date", "narrative", "rhythm");
 		mapper = new ObjectMapper();
 	}
 
 	@Test
-	public void shouldReturnAllTReports() throws Exception {
-		when(traumaRepo.findAll()).thenReturn(Collections.singletonList(TruamaReport));
-		mockMvc.perform(get("/api/traumareports")).andExpect(status().isOk())
+	public void shouldReturnAllReports() throws Exception {
+		when(cardiacArrestReportRepo.findAll()).thenReturn(Collections.singletonList(cardiacArrestReport));
+		mockMvc.perform(get("/api/cardiac-reports")).andExpect(status().isOk())
 				.andExpect(content().contentType("application/json;charset=UTF-8")).andExpect(content().json("[{}]"))
-				.andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(TruamaReport)), true));
+				.andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(cardiacArrestReport)),
+						true));
 	}
 
 	@Test
 	public void shouldReturnOneReport() throws Exception {
-		when(traumaRepo.findById(1l)).thenReturn(Optional.of(TruamaReport));
-		mockMvc.perform(get("/api/traumareports/1")).andExpect(status().isOk())
+		when(cardiacArrestReportRepo.findById(1l)).thenReturn(Optional.of(cardiacArrestReport));
+		mockMvc.perform(get("/api/cardiac-reports/1")).andExpect(status().isOk())
 				.andExpect(content().contentType("application/json;charset=UTF-8")).andExpect(content().json("{}"))
-				.andExpect(content().json(mapper.writeValueAsString(TruamaReport), true));
+				.andExpect(content().json(mapper.writeValueAsString(cardiacArrestReport), true));
 
 	}
 
 	@Test
 	public void shouldAddReport() throws Exception {
-		when(traumaRepo.save(any(TraumaReport.class))).thenReturn(TruamaReport);
-		when(traumaRepo.findAll()).thenReturn(Collections.singletonList(TruamaReport));
-		mockMvc.perform(post("/api/traumareports").contentType(MediaType.APPLICATION_JSON_UTF8)
-				.content(mapper.writeValueAsString(TruamaReport))).andExpect(status().isOk())
-				.andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(TruamaReport)), true));
+		when(cardiacArrestReportRepo.save(any(CardiacReport.class))).thenReturn(cardiacArrestReport);
+		when(cardiacArrestReportRepo.findAll()).thenReturn(Collections.singletonList(cardiacArrestReport));
+		mockMvc.perform(post("/api/cardiac-reports").contentType(MediaType.APPLICATION_JSON_UTF8)
+				.content(mapper.writeValueAsString(cardiacArrestReport))).andExpect(status().is3xxRedirection());
 
 	}
 
