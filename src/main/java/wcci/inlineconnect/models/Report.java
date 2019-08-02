@@ -10,9 +10,6 @@ public abstract class Report {
 	@Id
 	@GeneratedValue
 	private Long id;
-	public Long getId() {
-		return id;
-	}
 
 	private String medicNum;
 	private String chiefComplaint;
@@ -30,6 +27,10 @@ public abstract class Report {
 
 	public Report() {
 
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 	public String getMedicNum() {
