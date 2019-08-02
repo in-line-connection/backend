@@ -1,20 +1,18 @@
 package wcci.inlineconnect.models;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Lob;
 
 @Entity
 public class TraumaReport extends Report {
-	
+
 //	@Id
 //	@GeneratedValue
 //	private Long id;
-	
+
 	private String medicNum;
 	private String chiefComplaint;
-	
+
 	@Lob // may need to be BLOB for voice to text
 	private String narrative;
 	private String date;
@@ -24,9 +22,9 @@ public class TraumaReport extends Report {
 	private String respiratoryRate;
 	private String GCS;
 	private String bloodSugar;
-	
-	public TraumaReport(String medicNum, String chiefComplaint, String narrative,String date, String bloodPressure, String heartRate,
-			String spO2, String respiratoryRate, String GCS, String bloodSugar) {
+
+	public TraumaReport(String medicNum, String chiefComplaint, String narrative, String date, String bloodPressure,
+			String heartRate, String spO2, String respiratoryRate, String GCS, String bloodSugar) {
 		super(medicNum, chiefComplaint, narrative, date);
 		// TODO Auto-generated constructor stub
 		this.bloodPressure = bloodPressure;
@@ -35,56 +33,51 @@ public class TraumaReport extends Report {
 		this.respiratoryRate = respiratoryRate;
 		this.GCS = GCS;
 		this.bloodSugar = bloodSugar;
-		
-	}
-	public TraumaReport() {}
-		
-	
-	
 
-	
+	}
+
+	public TraumaReport() {
+	}
+
 	public String getBloodPressure() {
 		return bloodPressure;
 	}
-	
+
 	public String getHeartRate() {
 		return heartRate;
 	}
-	
+
 	public String getSpO2() {
 		return spO2;
 	}
-	
+
 	public String getRespiratoryRate() {
 		return respiratoryRate;
 	}
-	
+
 	public String getGCS() {
 		return GCS;
 	}
+
 	public String getBloodSugar() {
 		return bloodSugar;
 	}
-	
 
-		
+	public String getNarrative() {
+		return narrative;
+	}
 
-		public String getNarrative() {
-			return narrative;
-		}
-		
-		public String getDate() {
-			return date;
-		}
-		
+	public String getDate() {
+		return date;
+	}
 
-		public String getMedicNum() {
-			return medicNum;
-		}
+	public String getMedicNum() {
+		return medicNum;
+	}
 
-		public String getChiefComplaint() {
-			return chiefComplaint;
-		}
+	public String getChiefComplaint() {
+		return chiefComplaint;
+	}
 //		@Override
 //		public int hashCode() {
 //			final int prime = 31;
@@ -109,10 +102,4 @@ public class TraumaReport extends Report {
 //			return true;
 //		}
 
-	
-		
-
-	}
-
-
-
+}
