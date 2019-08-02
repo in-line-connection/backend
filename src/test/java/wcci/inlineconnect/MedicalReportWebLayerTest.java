@@ -37,7 +37,7 @@ public class MedicalReportWebLayerTest {
 
 	@Before
 	public void setup() {
-		medicalReport = new MedicalReport("medicNum", "chief Complaint","narrative", "date" , "rhythm", null, null, null, null, null);
+		medicalReport = new MedicalReport("medicNum", "chief Complaint","narrative", "date" , "rhythm", null, null, null, null, null, null);
 		mapper = new ObjectMapper();
 		// (String medicNum, String chiefComplaint, String narrative,String date, String bloodPressure, String heartRate,
 		// String spO2, String respiratoryRate, String GCS, String bloodSugar) 
