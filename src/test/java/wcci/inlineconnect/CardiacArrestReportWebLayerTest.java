@@ -34,41 +34,41 @@ public class CardiacArrestReportWebLayerTest {
 	private MockMvc mockMvc;
 
 	@MockBean
-	private CardiacReportRepository cardiacArrestReportRepo;
+	private CardiacReportRepository cardiacReportRepo;
 
-	private CardiacReport cardiacArrestReport;
+	private CardiacReport cardiacReport;
 	private ObjectMapper mapper;
 
 	@Before
 	public void setup() {
-		cardiacArrestReport = new CardiacReport("medicNum", "chief Complaint", "date", "narrative", "rhythm");
+		cardiacReport = new CardiacReport("medicNum", "chief Complaint", "date", "narrative", "rhythm");
 		mapper = new ObjectMapper();
 	}
 
 	@Test
 	public void shouldReturnAllReports() throws Exception {
-		when(cardiacArrestReportRepo.findAll()).thenReturn(Collections.singletonList(cardiacArrestReport));
+		when(cardiacReportRepo.findAll()).thenReturn(Collections.singletonList(cardiacReport));
 		mockMvc.perform(get("/api/cardiac-reports")).andExpect(status().isOk())
 				.andExpect(content().contentType("application/json;charset=UTF-8")).andExpect(content().json("[{}]"))
-				.andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(cardiacArrestReport)),
+				.andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(cardiacReport)),
 						true));
 	}
 
 	@Test
 	public void shouldReturnOneReport() throws Exception {
-		when(cardiacArrestReportRepo.findById(1l)).thenReturn(Optional.of(cardiacArrestReport));
+		when(cardiacReportRepo.findById(1l)).thenReturn(Optional.of(cardiacReport));
 		mockMvc.perform(get("/api/cardiac-reports/1")).andExpect(status().isOk())
 				.andExpect(content().contentType("application/json;charset=UTF-8")).andExpect(content().json("{}"))
-				.andExpect(content().json(mapper.writeValueAsString(cardiacArrestReport), true));
+				.andExpect(content().json(mapper.writeValueAsString(cardiacReport), true));
 
 	}
 
 	@Test
 	public void shouldAddReport() throws Exception {
-		when(cardiacArrestReportRepo.save(any(CardiacReport.class))).thenReturn(cardiacArrestReport);
-		when(cardiacArrestReportRepo.findAll()).thenReturn(Collections.singletonList(cardiacArrestReport));
+		when(cardiacReportRepo.save(any(CardiacReport.class))).thenReturn(cardiacReport);
+		when(cardiacReportRepo.findAll()).thenReturn(Collections.singletonList(cardiacReport));
 		mockMvc.perform(post("/api/cardiac-reports").contentType(MediaType.APPLICATION_JSON_UTF8)
-				.content(mapper.writeValueAsString(cardiacArrestReport))).andExpect(status().is3xxRedirection());
+				.content(mapper.writeValueAsString(cardiacReport))).andExpect(status().is3xxRedirection());
 
 	}
 

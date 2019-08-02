@@ -36,41 +36,40 @@ public class TraumaWebLayerTest {
 	@MockBean
 	private TraumaReportRepository traumaRepo;
 
-	private TraumaReport TruamaReport;
+	private TraumaReport traumaReport;
 	private ObjectMapper mapper;
 
 	@Before
 	public void setup() {
-		TruamaReport = new TraumaReport("1", "MVC", "Report", "07-07-17", "bp", "HR", "spO2", "respRate", "motor skill",
+		traumaReport = new TraumaReport("1", "MVC", "Report", "07-07-17", "bp", "HR", "spO2", "respRate", "motor skill",
 				"sugar");
 		mapper = new ObjectMapper();
 	}
 
 	@Test
 	public void shouldReturnAllTReports() throws Exception {
-		when(traumaRepo.findAll()).thenReturn(Collections.singletonList(TruamaReport));
+		when(traumaRepo.findAll()).thenReturn(Collections.singletonList(traumaReport));
 		mockMvc.perform(get("/api/traumareports")).andExpect(status().isOk())
 				.andExpect(content().contentType("application/json;charset=UTF-8")).andExpect(content().json("[{}]"))
-				.andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(TruamaReport)), true));
+				.andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(traumaReport)), true));
 	}
 
 	@Test
 	public void shouldReturnOneReport() throws Exception {
-		when(traumaRepo.findById(1l)).thenReturn(Optional.of(TruamaReport));
+		when(traumaRepo.findById(1l)).thenReturn(Optional.of(traumaReport));
 		mockMvc.perform(get("/api/traumareports/1")).andExpect(status().isOk())
 				.andExpect(content().contentType("application/json;charset=UTF-8")).andExpect(content().json("{}"))
-				.andExpect(content().json(mapper.writeValueAsString(TruamaReport), true));
+				.andExpect(content().json(mapper.writeValueAsString(traumaReport), true));
 
 	}
 
 	@Test
 	public void shouldAddReport() throws Exception {
-		when(traumaRepo.save(any(TraumaReport.class))).thenReturn(TruamaReport);
-		when(traumaRepo.findAll()).thenReturn(Collections.singletonList(TruamaReport));
+		when(traumaRepo.save(any(TraumaReport.class))).thenReturn(traumaReport);
+		when(traumaRepo.findAll()).thenReturn(Collections.singletonList(traumaReport));
 		mockMvc.perform(post("/api/traumareports").contentType(MediaType.APPLICATION_JSON_UTF8)
-				.content(mapper.writeValueAsString(TruamaReport))).andExpect(status().isOk())
-				.andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(TruamaReport)), true));
-
+				.content(mapper.writeValueAsString(traumaReport))).andExpect(status().isOk())
+				.andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(traumaReport)), true));
 	}
 
 }

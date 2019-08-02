@@ -1,4 +1,4 @@
-package wcci.inlineconnect;
+package wcci.inlineconnect.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

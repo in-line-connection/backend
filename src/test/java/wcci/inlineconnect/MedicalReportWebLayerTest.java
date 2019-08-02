@@ -19,6 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import wcci.inlineconnect.controllers.MedicalReportController;
 import wcci.inlineconnect.models.MedicalReport;
 import wcci.inlineconnect.repositories.MedicalReportRepository;
 
