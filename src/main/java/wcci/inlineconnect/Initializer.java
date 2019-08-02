@@ -24,7 +24,7 @@ public class Initializer implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		MedicalReport report1 = new MedicalReport("51", "CVA", "lmlmlmlmlmlml", "120/60", "60", "98%", "16", "15", "80",
+		MedicalReport report1 = new MedicalReport("51", "CVA", "12-01-1990" , "lmlmlmlmlmlml", "120/60", "60", "98%", "16", "15", "80",
 				"Sinus Rhythm", "april");
 		medicalReportRepo.save(report1);
 		TraumaReport report2 = new TraumaReport("50", "MI", "lmlmlmlmlmlml", "128/60", "69", "90%", "8", "10", "90",

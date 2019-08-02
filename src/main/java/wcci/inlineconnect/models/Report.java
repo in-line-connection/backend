@@ -9,19 +9,19 @@ import javax.persistence.MappedSuperclass;
 public abstract class Report {
 	@Id
 	@GeneratedValue
-	private Long id;
+	protected Long id;
 
-	private String medicNum;
-	private String chiefComplaint;
-	private String date;
+	protected String medicNum;
+	protected String chiefComplaint;
+	protected String date;
 	@Lob // may need to be BLOB for voice to text
-	private String narrative;
+	protected String narrative;
 
 	public Report(String medicNum, String chiefComplaint, String date, String narrative) {
 		this.medicNum = medicNum;
 		this.chiefComplaint = chiefComplaint;
-		this.narrative = narrative;
 		this.date = date;
+		this.narrative = narrative;
 
 	}
 
