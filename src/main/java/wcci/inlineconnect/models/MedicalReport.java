@@ -17,11 +17,12 @@ public class MedicalReport extends Report {
 		private String respiratoryRate;
 		private String GCS;
 		private String bloodSugar;
+		
 
 		private String rhythm;
 
 		public MedicalReport(String medicNum, String chiefComplaint,String date, String sex, String age, String narrative, String bloodPressure, String heartRate,
-				String spO2, String respiratoryRate, String GCS, String bloodSugar, String cardiacFuction, String rhythm) {
+				String spO2, String respiratoryRate, String GCS, String bloodSugar, String rhythm) {
 			super(medicNum, chiefComplaint, date, narrative, sex, age);
 			this.bloodPressure = bloodPressure;
 			this.heartRate = heartRate;

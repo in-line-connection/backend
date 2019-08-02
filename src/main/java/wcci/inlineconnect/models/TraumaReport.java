@@ -6,16 +6,7 @@ import javax.persistence.Lob;
 @Entity
 public class TraumaReport extends Report {
 
-//	@Id
-//	@GeneratedValue
-//	private Long id;
 
-	private String medicNum;
-	private String chiefComplaint;
-
-	@Lob // may need to be BLOB for voice to text
-	private String narrative;
-	private String date;
 	private String bloodPressure;
 	private String heartRate;
 	private String spO2;
@@ -26,7 +17,7 @@ public class TraumaReport extends Report {
 	public TraumaReport(String medicNum, String chiefComplaint, String narrative, String sex, String age, String date, String bloodPressure,
 			String heartRate, String spO2, String respiratoryRate, String GCS, String bloodSugar) {
 		super(medicNum, chiefComplaint, narrative, date, sex, age);
-		// TODO Auto-generated constructor stub
+		
 		this.bloodPressure = bloodPressure;
 		this.heartRate = heartRate;
 		this.spO2 = spO2;
