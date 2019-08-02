@@ -41,7 +41,7 @@ public class CardiacArrestReportWebLayerTest {
 
 	@Before
 	public void setup() {
-		cardiacReport = new CardiacReport("medicNum", "chief Complaint", "date", "narrative", "rhythm");
+		cardiacReport = new CardiacReport("medicNum", "chief Complaint", "date","sex", "age", "narrative", "rhythm");
 		mapper = new ObjectMapper();
 	}
 

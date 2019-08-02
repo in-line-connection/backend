@@ -41,7 +41,7 @@ public class TraumaWebLayerTest {
 
 	@Before
 	public void setup() {
-		traumaReport = new TraumaReport("1", "MVC", "Report", "07-07-17", "bp", "HR", "spO2", "respRate", "motor skill",
+		traumaReport = new TraumaReport("1", "MVC", "Report", "07-07-17","sex","age", "bp", "HR", "spO2", "respRate", "motor skill",
 				"sugar");
 		mapper = new ObjectMapper();
 	}

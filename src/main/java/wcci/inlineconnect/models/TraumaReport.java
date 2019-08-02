@@ -23,9 +23,9 @@ public class TraumaReport extends Report {
 	private String GCS;
 	private String bloodSugar;
 
-	public TraumaReport(String medicNum, String chiefComplaint, String narrative, String date, String bloodPressure,
+	public TraumaReport(String medicNum, String chiefComplaint, String narrative, String sex, String age, String date, String bloodPressure,
 			String heartRate, String spO2, String respiratoryRate, String GCS, String bloodSugar) {
-		super(medicNum, chiefComplaint, narrative, date);
+		super(medicNum, chiefComplaint, narrative, date, sex, age);
 		// TODO Auto-generated constructor stub
 		this.bloodPressure = bloodPressure;
 		this.heartRate = heartRate;

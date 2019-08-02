@@ -45,7 +45,9 @@ public class CardiacReportController {
 		String date = json.getString("date");
 		String narrative = json.getString("narrative");
 		String rhythm = json.getString("rhythm");
-		CardiacReport reportToSave = new CardiacReport(medicNum, chiefComplaint, date, narrative, rhythm);
+		String sex = json.getString("sex");
+		String age = json.getString("age");
+		CardiacReport reportToSave = new CardiacReport(medicNum, chiefComplaint, date, sex, age, narrative, rhythm);
 		CardiacReport savedReport = cardiacReportRepo.save(reportToSave);
 		response.sendRedirect("/api/cardiac-reports");
 	}
