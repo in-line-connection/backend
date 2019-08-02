@@ -3,12 +3,17 @@ package wcci.inlineconnect.models;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.MappedSuperclass;
 
+@MappedSuperclass
 public abstract class Report {
-
 	@Id
 	@GeneratedValue
 	private Long id;
+	public Long getId() {
+		return id;
+	}
+
 	private String medicNum;
 	private String chiefComplaint;
 	private String date;
@@ -27,10 +32,6 @@ public abstract class Report {
 
 	}
 
-	public Long getId() {
-		return id;
-	}
-
 	public String getMedicNum() {
 		return medicNum;
 	}
@@ -46,5 +47,6 @@ public abstract class Report {
 	public String getNarrative() {
 		return narrative;
 	}
+	
 
 }
