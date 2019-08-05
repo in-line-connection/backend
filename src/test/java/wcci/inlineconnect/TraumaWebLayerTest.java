@@ -41,15 +41,14 @@ public class TraumaWebLayerTest {
 
 	@Before
 	public void setup() {
-		traumaReport = new TraumaReport("1", "MVC", "Report", "07-07-17", "bp", "HR", "spO2", "respRate", "motor skill",
-				"sugar");
+		traumaReport = new TraumaReport("1", "MVC", "Report", "07-07-17","sex","age", "bp", "HR", "spO2", "respRate", "motor skill","sugar");
 		mapper = new ObjectMapper();
 	}
 
 	@Test
 	public void shouldReturnAllTReports() throws Exception {
 		when(traumaRepo.findAll()).thenReturn(Collections.singletonList(traumaReport));
-		mockMvc.perform(get("/api/traumareports")).andExpect(status().isOk())
+		mockMvc.perform(get("/api/trauma-reports")).andExpect(status().isOk())
 				.andExpect(content().contentType("application/json;charset=UTF-8")).andExpect(content().json("[{}]"))
 				.andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(traumaReport)), true));
 	}
@@ -67,9 +66,8 @@ public class TraumaWebLayerTest {
 	public void shouldAddReport() throws Exception {
 		when(traumaRepo.save(any(TraumaReport.class))).thenReturn(traumaReport);
 		when(traumaRepo.findAll()).thenReturn(Collections.singletonList(traumaReport));
-		mockMvc.perform(post("/api/traumareports").contentType(MediaType.APPLICATION_JSON_UTF8)
-				.content(mapper.writeValueAsString(traumaReport))).andExpect(status().isOk())
-				.andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(traumaReport)), true));
+		mockMvc.perform(post("/api/trauma-reports").contentType(MediaType.APPLICATION_JSON_UTF8)
+				.content(mapper.writeValueAsString(traumaReport))).andExpect(status().is3xxRedirection());
 	}
 
 }

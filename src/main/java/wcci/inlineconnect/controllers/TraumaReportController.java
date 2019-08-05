@@ -1,5 +1,12 @@
 package wcci.inlineconnect.controllers;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.skyscreamer.jsonassert.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +27,7 @@ public class TraumaReportController {
 	@Autowired
 	private TraumaReportRepository traumaRepo;
 	
-	@GetMapping("traumareports")
+	@GetMapping("trauma-reports")
 	public Iterable<TraumaReport> findAllReports() {
 		return traumaRepo.findAll();
 	}
@@ -29,10 +36,25 @@ public class TraumaReportController {
 	public Report findSingleReports(@PathVariable Long id) {
 		return traumaRepo.findById(id).get();
 	}
-	@PostMapping("traumareports")
-	public Iterable<TraumaReport> createReport(@RequestBody TraumaReport report){
-		traumaRepo.save(report);
-		return traumaRepo.findAll();
-		
+	@PostMapping("/trauma-reports")
+	public void createTruamaReport(@RequestBody String body, HttpServletResponse response) throws JSONException, IOException {
+		JSONObject json = (JSONObject) JSONParser.parseJSON(body);
+		String medicNum = json.getString("medicNum");
+		String chiefComplaint = json.getString("chiefComplaint");
+		String date = json.getString("date");
+		String narrative = json.getString("narrative");
+		String sex = json.getString("sex");
+		String age = json.getString("age");
+		String BP = json.getString("bloodPressure");
+		String HR = json.getString("heartRate");
+		String SpO2 = json.getString("spO2");
+		String RespRate = json.getString("respiratoryRate");
+		String gcs = json.getString("gcs");
+		String bloodSugar = json.getString("bloodSugar");
+		System.out.println("test test test");
+		TraumaReport reportToSave = new TraumaReport(medicNum, chiefComplaint, date, sex, age, narrative, BP, HR, SpO2, RespRate, gcs, bloodSugar);
+		TraumaReport savedReport = traumaRepo.save(reportToSave);
+		response.sendRedirect("/api/trauma-reports");
 	}
+	
 }

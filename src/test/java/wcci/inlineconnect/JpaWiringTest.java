@@ -41,10 +41,10 @@ public class JpaWiringTest {
 
 	@Before
 	public void setup() {
-		cardiacReport = new CardiacReport("medicNum", "chief Complaint", "date", "narrative", "rhythm");
-		medicalReport = new MedicalReport("51", "CVA", "12-01-1990", "lmlmlmlmlmlml", "120/60", "60", "98%", "16", "15",
+		cardiacReport = new CardiacReport("medicNum", "chief Complaint", "date","sex","age", "narrative", "rhythm");
+		medicalReport = new MedicalReport("51", "CVA", "12-01-1990","sex","age", "lmlmlmlmlmlml", "120/60", "60", "98%", "16", 
 				"80", "Sinus Rhythm", "april");
-		traumaReport = new TraumaReport("1", "MVC", "Report", "07-07-17", "bp", "HR", "spO2", "respRate", "motor skill",
+		traumaReport = new TraumaReport("1", "MVC", "Report", "07-07-17","sex","age", "bp", "HR", "spO2", "respRate", "motor skill",
 				"sugar");
 		cardiacRepo.save(cardiacReport);
 		medicalRepo.save(medicalReport);
@@ -91,6 +91,8 @@ public class JpaWiringTest {
 	@Test
 	public void shouldGenerateIdForTraumaReport() {
 		long id = traumaReport.getId();
+		String item = traumaReport.getGCS();
+		System.out.println(item + "Hello");
 		assertThat(id, is(greaterThan(0L)));
 	}
 
