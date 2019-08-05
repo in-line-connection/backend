@@ -11,18 +11,18 @@ public class TraumaReport extends Report {
 	private String heartRate;
 	private String spO2;
 	private String respiratoryRate;
-	private String GCS;
+	private String gcs;
 	private String bloodSugar;
 
 	public TraumaReport(String medicNum, String chiefComplaint, String narrative, String sex, String age, String date, String bloodPressure,
-			String heartRate, String spO2, String respiratoryRate, String GCS, String bloodSugar) {
+			String heartRate, String spO2, String respiratoryRate, String gcs, String bloodSugar) {
 		super(medicNum, chiefComplaint, narrative, date, sex, age);
 		
 		this.bloodPressure = bloodPressure;
 		this.heartRate = heartRate;
 		this.spO2 = spO2;
 		this.respiratoryRate = respiratoryRate;
-		this.GCS = GCS;
+		this.gcs = gcs;
 		this.bloodSugar = bloodSugar;
 
 	}
@@ -47,7 +47,7 @@ public class TraumaReport extends Report {
 	}
 
 	public String getGCS() {
-		return GCS;
+		return gcs;
 	}
 
 	public String getBloodSugar() {

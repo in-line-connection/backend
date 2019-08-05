@@ -91,6 +91,8 @@ public class JpaWiringTest {
 	@Test
 	public void shouldGenerateIdForTraumaReport() {
 		long id = traumaReport.getId();
+		String item = traumaReport.getGCS();
+		System.out.println(item + "Hello");
 		assertThat(id, is(greaterThan(0L)));
 	}
 
