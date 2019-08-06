@@ -22,23 +22,24 @@ import wcci.inlineconnect.repositories.MedicalReportRepository;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api")
+@RequestMapping("/api/medical-reports")
 public class MedicalReportController {
 	
 	@Autowired
 	private MedicalReportRepository medicalReportRepo;
 	
-	@GetMapping("/medical-reports")
+	@GetMapping({"", "/"})
 	public Iterable<MedicalReport> getAllMedicalReports() {
 		return medicalReportRepo.findAll();
 		 
 	}
 	
-	@GetMapping("/medical-reports/{id}")
+	@GetMapping({"/{id}", "/{id}/"})
 	public MedicalReport getSingleMedicalReport(@PathVariable Long id) {
 		return medicalReportRepo.findById(id).get();
 	}
-	@PostMapping("/medical-reports")
+	
+	@PostMapping({"", "/"})
 	public void createMedicalReport(@RequestBody String body, HttpServletResponse response) throws JSONException, IOException {
 		JSONObject json = (JSONObject) JSONParser.parseJSON(body);
 		String medicNum = json.getString("medicNum");

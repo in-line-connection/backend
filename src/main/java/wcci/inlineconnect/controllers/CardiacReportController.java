@@ -21,23 +21,23 @@ import wcci.inlineconnect.repositories.CardiacReportRepository;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/cardiac-reports")
 public class CardiacReportController {
 	
 	@Autowired
 	private CardiacReportRepository cardiacReportRepo;
 
-	@GetMapping("/cardiac-reports")
+	@GetMapping({"", "/"})
 	public Iterable<CardiacReport> getAllCardiacReports() {
 		return cardiacReportRepo.findAll();
 	}
 	
-	@GetMapping("cardiac-reports/{id}")
+	@GetMapping({"{id}", "{id}/"})
 	public CardiacReport getOneCardiacReport(@PathVariable Long id) {
 		return cardiacReportRepo.findById(id).get();
 	}
 	
-	@PostMapping("/cardiac-reports")
+	@PostMapping({"", "/"})
 	public void createCardiacReport(@RequestBody String body, HttpServletResponse response) throws JSONException, IOException {
 		JSONObject json = (JSONObject) JSONParser.parseJSON(body);
 		String medicNum = json.getString("medicNum");
