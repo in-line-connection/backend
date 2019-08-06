@@ -56,7 +56,7 @@ public class TraumaWebLayerTest {
 	@Test
 	public void shouldReturnOneReport() throws Exception {
 		when(traumaRepo.findById(1l)).thenReturn(Optional.of(traumaReport));
-		mockMvc.perform(get("/api/traumareports/1")).andExpect(status().isOk())
+		mockMvc.perform(get("/api/trauma-reports/1")).andExpect(status().isOk())
 				.andExpect(content().contentType("application/json;charset=UTF-8")).andExpect(content().json("{}"))
 				.andExpect(content().json(mapper.writeValueAsString(traumaReport), true));
 
