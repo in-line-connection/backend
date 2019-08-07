@@ -4,22 +4,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 
 @MappedSuperclass
 public abstract class Report {
 	@Id
 	@GeneratedValue
 	protected Long id;
+	
+	@OneToOne
+	protected MVC chiefComplaint;
 
 	protected String medicNum;
-	protected String chiefComplaint;
 	protected String date;
 	@Lob // may need to be BLOB for voice to text
 	protected String narrative;
 	protected String sex;
 	protected String age;
 
-	public Report(String medicNum, String chiefComplaint, String date, String narrative, String sex, String age) {
+	public Report(String medicNum, MVC chiefComplaint, String date, String narrative, String sex, String age) {
 		this.medicNum = medicNum;
 		this.chiefComplaint = chiefComplaint;
 		this.date = date;
@@ -49,7 +52,7 @@ public abstract class Report {
 		return medicNum;
 	}
 
-	public String getChiefComplaint() {
+	public MVC getChiefComplaint() {
 		return chiefComplaint;
 	}
 

@@ -1,7 +1,6 @@
 package wcci.inlineconnect.models;
 
 import javax.persistence.Entity;
-import javax.persistence.Lob;
 
 @Entity
 public class TraumaReport extends Report {
@@ -14,7 +13,7 @@ public class TraumaReport extends Report {
 	private String gcs;
 	private String bloodSugar;
 
-	public TraumaReport(String medicNum, String chiefComplaint, String narrative, String sex, String age, String date, String bloodPressure,
+	public TraumaReport(String medicNum, MVC chiefComplaint, String narrative, String sex, String age, String date, String bloodPressure,
 			String heartRate, String spO2, String respiratoryRate, String gcs, String bloodSugar) {
 		super(medicNum, chiefComplaint, date, narrative, sex, age);
 		
@@ -66,7 +65,7 @@ public class TraumaReport extends Report {
 		return medicNum;
 	}
 
-	public String getChiefComplaint() {
+	public MVC getChiefComplaint() {
 		return chiefComplaint;
 	}
 //		@Override

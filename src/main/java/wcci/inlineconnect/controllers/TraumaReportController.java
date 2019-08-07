@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import wcci.inlineconnect.models.MVC;
 import wcci.inlineconnect.models.Report;
 import wcci.inlineconnect.models.TraumaReport;
+import wcci.inlineconnect.repositories.MVCRepository;
 import wcci.inlineconnect.repositories.TraumaReportRepository;
 
 @CrossOrigin
@@ -26,6 +28,9 @@ import wcci.inlineconnect.repositories.TraumaReportRepository;
 public class TraumaReportController {
 	@Autowired
 	private TraumaReportRepository traumaRepo;
+	
+	@Autowired
+	private MVCRepository mvcRepo;
 	
 	@GetMapping({"/",""})
 	public Iterable<TraumaReport> findAllReports() {
@@ -40,7 +45,7 @@ public class TraumaReportController {
 	public void createTruamaReport(@RequestBody String body, HttpServletResponse response) throws JSONException, IOException {
 		JSONObject json = (JSONObject) JSONParser.parseJSON(body);
 		String medicNum = json.getString("medicNum");
-		String chiefComplaint = json.getString("chiefComplaint");
+		Long chiefComplaintId = json.getLong("chiefComplaint");
 		String date = json.getString("date");
 		String narrative = json.getString("narrative");
 		String sex = json.getString("sex");
@@ -52,7 +57,7 @@ public class TraumaReportController {
 		String gcs = json.getString("gcs");
 		String bloodSugar = json.getString("bloodSugar");
 		System.out.println("test test test");
-		TraumaReport reportToSave = new TraumaReport(medicNum, chiefComplaint, narrative, sex, age, date, BP, HR, SpO2, RespRate, gcs, bloodSugar);
+		TraumaReport reportToSave = new TraumaReport(medicNum, mvcRepo.findById(chiefComplaintId).get(), narrative, sex, age, date, BP, HR, SpO2, RespRate, gcs, bloodSugar);
 		TraumaReport savedReport = traumaRepo.save(reportToSave);
 		response.sendRedirect("/api/trauma-reports");
 	}
