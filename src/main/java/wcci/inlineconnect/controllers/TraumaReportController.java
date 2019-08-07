@@ -52,7 +52,7 @@ public class TraumaReportController {
 		String gcs = json.getString("gcs");
 		String bloodSugar = json.getString("bloodSugar");
 		System.out.println("test test test");
-		TraumaReport reportToSave = new TraumaReport(medicNum, chiefComplaint, date, sex, age, narrative, BP, HR, SpO2, RespRate, gcs, bloodSugar);
+		TraumaReport reportToSave = new TraumaReport(medicNum, chiefComplaint, narrative, sex, age, date, BP, HR, SpO2, RespRate, gcs, bloodSugar);
 		TraumaReport savedReport = traumaRepo.save(reportToSave);
 		response.sendRedirect("/api/trauma-reports");
 	}

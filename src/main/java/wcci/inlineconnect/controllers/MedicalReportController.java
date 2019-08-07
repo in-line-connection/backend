@@ -55,7 +55,7 @@ public class MedicalReportController {
 		String RespRate = json.getString("respiratoryRate");
 		String gcs = json.getString("gcs");
 		String bloodSugar = json.getString("bloodSugar");
-		MedicalReport reportToSave = new MedicalReport(medicNum, chiefComplaint, date, sex, age, narrative, rhythm, BP, HR, SpO2, RespRate, gcs, bloodSugar);
+		MedicalReport reportToSave = new MedicalReport(medicNum, chiefComplaint, date, sex, age, narrative, BP, HR, SpO2, RespRate, gcs, bloodSugar, rhythm);
 		MedicalReport savedReport = medicalReportRepo.save(reportToSave);
 		response.sendRedirect("/api/medical-reports");
 	}
