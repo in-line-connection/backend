@@ -4,12 +4,12 @@ import javax.persistence.Entity;
 
 @Entity
 public class CardiacReport extends Report {
+	
 
 	private String rhythm;
 
-	public CardiacReport(String medicNum, String chiefComplaint, String date, String sex, String age, String narrative,
-			String rhythm) {
-		super(medicNum, chiefComplaint, date, narrative, sex, age);
+	public CardiacReport(String medicNum, String chiefComplaint, String date, String sex, String age, String narrative, String rhythm) {
+		super(medicNum, chiefComplaint, narrative, date, sex, age);
 		this.rhythm = rhythm;
 	}
 
