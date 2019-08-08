@@ -50,7 +50,7 @@ public class JpaWiringTest {
 		mvc = new MVC("Driver", "45 mph", true, true, false);
 		medicalReport = new MedicalReport("51", mvc, "12-01-1990", "sex", "age", "lmlmlmlmlmlml", "120/60", "60", "98%",
 				"16", "80", "Sinus Rhythm", "april");
-		cardiacReport = new CardiacReport("medicNum", mvc, "date", "sex", "age", "narrative", "rhythm");
+		cardiacReport = new CardiacReport("medicNum", "date", "sex", "age", "narrative", "rhythm");
 		traumaReport = new TraumaReport("1", mvc, "Report", "07-07-17", "sex", "age", "bp", "HR", "spO2", "respRate",
 				"motor skill", "sugar");
 		mvcRepo.save(mvc);
@@ -66,11 +66,11 @@ public class JpaWiringTest {
 
 	}
 
-//	@Test
-//	public void shouldSaveAndLoadCardiacReport() {
-//		CardiacReport testReport = cardiacRepo.findById(cardiacReport.getId()).get();
-//		assertThat(testReport.getChiefComplaint(), is(cardiacReport.getChiefComplaint()));
-//	}
+	@Test
+	public void shouldSaveAndLoadCardiacReport() {
+		CardiacReport testReport = cardiacRepo.findById(cardiacReport.getId()).get();
+		assertThat(testReport.getChiefComplaint(), is(cardiacReport.getChiefComplaint()));
+	}
 //
 //	@Test
 //	public void shouldGenerateIdForCardiacReport() {

@@ -45,7 +45,7 @@ public class CardiacReportController {
 	public void createCardiacReport(@RequestBody String body, HttpServletResponse response) throws JSONException, IOException {
 		JSONObject json = (JSONObject) JSONParser.parseJSON(body);
 		String medicNum = json.getString("medicNum");
-		String chiefComplaintId = json.getString("chiefComplaint");
+//		String chiefComplaintId = json.getString("chiefComplaint");
 		System.out.println("BODY");
 		String date = json.getString("date");
 		String narrative = json.getString("narrative");
@@ -53,7 +53,7 @@ public class CardiacReportController {
 		String sex = json.getString("sex");
 		String age = json.getString("age");
 		System.out.println("CONSTRUCTOR");
-		CardiacReport reportToSave = new CardiacReport(medicNum, mvcRepo.findById(Long.parseLong(chiefComplaintId)).get(), date, sex, age, narrative, rhythm);
+		CardiacReport reportToSave = new CardiacReport(medicNum,  date, sex, age, narrative, rhythm);
 		CardiacReport savedReport = cardiacReportRepo.save(reportToSave);
 		response.sendRedirect("/api/cardiac-reports");
 	}

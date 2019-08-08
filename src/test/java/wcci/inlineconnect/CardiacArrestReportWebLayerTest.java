@@ -50,7 +50,7 @@ public class CardiacArrestReportWebLayerTest {
 	public void setup() {
 		mvc = new MVC("Driver", "45 mph", true, true, false);
 		mvcRepo.save(mvc);
-		cardiacReport = new CardiacReport("medicNum",mvc, "date","sex", "age", "narrative", "rhythm");
+		cardiacReport = new CardiacReport("medicNum", "date","sex", "age", "narrative", "rhythm");
 		mapper = new ObjectMapper();
 	}
 

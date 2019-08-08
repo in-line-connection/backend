@@ -18,11 +18,11 @@ public abstract class Report {
 	protected String narrative;
 	protected String sex;
 	protected String age;
-	protected MVC chiefComplaint;
+//	protected MVC chiefComplaint;
 	
-	public Report(String medicNum, MVC chiefComplaint, String date, String narrative, String sex, String age) {
+	public Report(String medicNum,  String date, String narrative, String sex, String age) {
 		this.medicNum = medicNum;
-		this.chiefComplaint = chiefComplaint;
+//		this.chiefComplaint = chiefComplaint;
 		this.date = date;
 		this.narrative = narrative;
 		this.sex = sex;
@@ -50,9 +50,7 @@ public abstract class Report {
 		return medicNum;
 	}
 
-	public MVC getChiefComplaint() {
-		return chiefComplaint;
-	}
+	
 
 	public String getDate() {
 		return date;

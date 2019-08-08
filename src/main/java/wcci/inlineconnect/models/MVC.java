@@ -17,11 +17,11 @@ public class MVC {
 	@OneToOne 
 	private TraumaReport traumaReport;
 	
-	@OneToOne
-	private CardiacReport cardiacReport;
-	
-	@OneToOne
-	private MedicalReport medicalReport;
+//	@OneToOne
+//	private CardiacReport cardiacReport;
+//	
+//	@OneToOne
+//	private MedicalReport medicalReport;
 	
 	private String seatPosition;
 	private String speed;

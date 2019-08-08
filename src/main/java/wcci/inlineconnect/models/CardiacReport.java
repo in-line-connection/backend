@@ -11,9 +11,9 @@ public class CardiacReport extends Report {
 
 	private String rhythm;
 
-	public CardiacReport(String medicNum, MVC chiefComplaint, String date, String sex, String age, String narrative,
+	public CardiacReport(String medicNum, String date, String sex, String age, String narrative,
 			String rhythm) {
-		super(medicNum, chiefComplaint, date, narrative, sex, age);
+		super(medicNum, date, narrative, sex, age);
 		this.rhythm = rhythm;
 	}
 
@@ -22,6 +22,11 @@ public class CardiacReport extends Report {
 
 	public String getRhythm() {
 		return rhythm;
+	}
+
+	public Object getChiefComplaint() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

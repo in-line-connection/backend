@@ -6,8 +6,8 @@ import javax.persistence.OneToOne;
 @Entity
 public class MedicalReport extends Report {
 
-	@OneToOne
-	protected MVC chiefComplaint;
+//	@OneToOne
+//	protected MVC chiefComplaint;
 //		@Lob // may need to be BLOB for voice to text
 
 	private String bloodPressure;
@@ -22,7 +22,7 @@ public class MedicalReport extends Report {
 	public MedicalReport(String medicNum, MVC chiefComplaint, String date, String sex, String age, String narrative,
 			String bloodPressure, String heartRate, String spO2, String respiratoryRate, String gcs, String bloodSugar,
 			String rhythm) {
-		super(medicNum, chiefComplaint, date, narrative, sex, age);
+		super(medicNum, date, narrative, sex, age);
 		this.bloodPressure = bloodPressure;
 		this.heartRate = heartRate;
 		this.spO2 = spO2;
