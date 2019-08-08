@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import wcci.inlineconnect.models.CardiacReport;
+import wcci.inlineconnect.models.MVC;
 import wcci.inlineconnect.models.MedicalReport;
+import wcci.inlineconnect.repositories.MVCRepository;
 import wcci.inlineconnect.repositories.MedicalReportRepository;
 
 @RestController
@@ -27,6 +29,9 @@ public class MedicalReportController {
 	
 	@Autowired
 	private MedicalReportRepository medicalReportRepo;
+	
+	@Autowired
+	private MVCRepository mvcRepo;
 	
 	@GetMapping({"", "/"})
 	public Iterable<MedicalReport> getAllMedicalReports() {
@@ -43,7 +48,7 @@ public class MedicalReportController {
 	public void createMedicalReport(@RequestBody String body, HttpServletResponse response) throws JSONException, IOException {
 		JSONObject json = (JSONObject) JSONParser.parseJSON(body);
 		String medicNum = json.getString("medicNum");
-		String chiefComplaint = json.getString("chiefComplaint");
+		Long chiefComplaintId = json.getLong("chiefComplaint");
 		String date = json.getString("date");
 		String narrative = json.getString("narrative");
 		String rhythm = json.getString("rhythm");
@@ -55,7 +60,7 @@ public class MedicalReportController {
 		String RespRate = json.getString("respiratoryRate");
 		String gcs = json.getString("gcs");
 		String bloodSugar = json.getString("bloodSugar");
-		MedicalReport reportToSave = new MedicalReport(medicNum, chiefComplaint, date, sex, age, narrative, BP, HR, SpO2, RespRate, gcs, bloodSugar, rhythm);
+		MedicalReport reportToSave = new MedicalReport(medicNum, mvcRepo.findById(chiefComplaintId).get(), date, sex, age, narrative, BP, HR, SpO2, RespRate, gcs, bloodSugar, rhythm);
 		MedicalReport savedReport = medicalReportRepo.save(reportToSave);
 		response.sendRedirect("/api/medical-reports");
 	}

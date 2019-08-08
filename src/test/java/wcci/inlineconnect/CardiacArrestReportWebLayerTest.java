@@ -24,7 +24,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import wcci.inlineconnect.controllers.CardiacReportController;
 import wcci.inlineconnect.models.CardiacReport;
+import wcci.inlineconnect.models.MVC;
 import wcci.inlineconnect.repositories.CardiacReportRepository;
+import wcci.inlineconnect.repositories.MVCRepository;
 
 @WebMvcTest(CardiacReportController.class)
 @RunWith(SpringRunner.class)
@@ -35,13 +37,19 @@ public class CardiacArrestReportWebLayerTest {
 
 	@MockBean
 	private CardiacReportRepository cardiacReportRepo;
+	
+	@MockBean
+	private MVCRepository mvcRepo;
 
 	private CardiacReport cardiacReport;
+	private MVC mvc;
 	private ObjectMapper mapper;
 
 	@Before
 	public void setup() {
-		cardiacReport = new CardiacReport("medicNum", "chief Complaint", "date","sex", "age", "narrative", "rhythm");
+		mvc = new MVC("Driver", "45 mph", true, true, false);
+		mvcRepo.save(mvc);
+		cardiacReport = new CardiacReport("medicNum",mvc, "date","sex", "age", "narrative", "rhythm");
 		mapper = new ObjectMapper();
 	}
 
