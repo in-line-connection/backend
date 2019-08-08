@@ -20,7 +20,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import wcci.inlineconnect.controllers.MedicalReportController;
+import wcci.inlineconnect.models.MVC;
 import wcci.inlineconnect.models.MedicalReport;
+import wcci.inlineconnect.repositories.MVCRepository;
 import wcci.inlineconnect.repositories.MedicalReportRepository;
 
 @WebMvcTest(MedicalReportController.class)
@@ -32,13 +34,19 @@ public class MedicalReportWebLayerTest {
 
 	@MockBean
 	private MedicalReportRepository medicalReportRepo;
+	
+	@MockBean
+	private MVCRepository mvcRepo;
 
+	private MVC mvc;
 	private MedicalReport medicalReport;
 	private ObjectMapper mapper;
 
 	@Before
 	public void setup() {
-		medicalReport = new MedicalReport("51", "CVA", "12-01-1990" ,"sex","age", "lmlmlmlmlmlml", "120/60", "60", "98%", "16",  "80",
+		mvc = new MVC("Driver", "45 mph", true, true, false);
+		mvcRepo.save(mvc);
+		medicalReport = new MedicalReport("51", mvc, "12-01-1990" ,"sex","age", "lmlmlmlmlmlml", "120/60", "60", "98%", "16",  "80",
 				"Sinus Rhythm", "april");
 		mapper = new ObjectMapper();
 		// (String medicNum, String chiefComplaint, String narrative,String date, String bloodPressure, String heartRate,

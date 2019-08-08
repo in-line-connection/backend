@@ -5,14 +5,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Entity
 public class MVC {
 	@Id
 	@GeneratedValue
 	protected Long id;
 
+	
+	@OneToOne 
+	private TraumaReport traumaReport;
+	
 	@OneToOne
-
+	private CardiacReport cardiacReport;
+	
+	@OneToOne
+	private MedicalReport medicalReport;
+	
 	private String seatPosition;
 	private String speed;
 	private boolean ambulatory;
@@ -27,6 +37,10 @@ public class MVC {
 		this.prolongedExtrication = prolongedExtrication;
 		this.immobilized = immobilized;
 
+	}
+	
+	public MVC() {
+		
 	}
 
 	public String getSeatPosition() {

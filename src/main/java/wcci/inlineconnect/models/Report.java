@@ -11,9 +11,6 @@ public abstract class Report {
 	@Id
 	@GeneratedValue
 	protected Long id;
-	
-	@OneToOne
-	protected MVC chiefComplaint;
 
 	protected String medicNum;
 	protected String date;
@@ -21,7 +18,8 @@ public abstract class Report {
 	protected String narrative;
 	protected String sex;
 	protected String age;
-
+	protected MVC chiefComplaint;
+	
 	public Report(String medicNum, MVC chiefComplaint, String date, String narrative, String sex, String age) {
 		this.medicNum = medicNum;
 		this.chiefComplaint = chiefComplaint;
@@ -32,16 +30,16 @@ public abstract class Report {
 
 	}
 
+	public Report() {
+
+	}
+
 	public String getSex() {
 		return sex;
 	}
 
 	public String getAge() {
 		return age;
-	}
-
-	public Report() {
-
 	}
 
 	public Long getId() {
@@ -63,6 +61,5 @@ public abstract class Report {
 	public String getNarrative() {
 		return narrative;
 	}
-	
 
 }

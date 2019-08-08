@@ -1,9 +1,13 @@
 package wcci.inlineconnect.models;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 public class CardiacReport extends Report {
+
+	@OneToOne
+	protected MVC chiefComplaint;
 
 	private String rhythm;
 

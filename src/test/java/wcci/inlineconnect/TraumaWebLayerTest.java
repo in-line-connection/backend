@@ -23,7 +23,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import wcci.inlineconnect.controllers.TraumaReportController;
+import wcci.inlineconnect.models.MVC;
 import wcci.inlineconnect.models.TraumaReport;
+import wcci.inlineconnect.repositories.MVCRepository;
 import wcci.inlineconnect.repositories.TraumaReportRepository;
 
 @WebMvcTest(TraumaReportController.class)
@@ -36,12 +38,18 @@ public class TraumaWebLayerTest {
 	@MockBean
 	private TraumaReportRepository traumaRepo;
 
+	@MockBean
+	private MVCRepository mvcRepo;
+	
+	private MVC mvc;
 	private TraumaReport traumaReport;
 	private ObjectMapper mapper;
 
 	@Before
 	public void setup() {
-		traumaReport = new TraumaReport("1", "MVC", "Report", "07-07-17","sex","age", "bp", "HR", "spO2", "respRate", "motor skill","sugar");
+		mvc = new MVC("Driver", "45 mph", true, true, false);
+		mvcRepo.save(mvc);
+		traumaReport = new TraumaReport("1", mvc, "Report", "07-07-17","sex","age", "bp", "HR", "spO2", "respRate", "motor skill","sugar");
 		mapper = new ObjectMapper();
 	}
 

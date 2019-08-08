@@ -1,10 +1,13 @@
 package wcci.inlineconnect.models;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 public class MedicalReport extends Report {
 
+	@OneToOne
+	protected MVC chiefComplaint;
 //		@Lob // may need to be BLOB for voice to text
 
 	private String bloodPressure;
