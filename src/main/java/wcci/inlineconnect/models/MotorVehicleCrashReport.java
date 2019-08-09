@@ -1,5 +1,8 @@
 package wcci.inlineconnect.models;
 
+import javax.persistence.Entity;
+
+@Entity
 public class MotorVehicleCrashReport extends TraumaReport {
 
 	private String seatPosition;
@@ -8,12 +11,17 @@ public class MotorVehicleCrashReport extends TraumaReport {
 	private boolean prolongedExtrication;
 	private boolean immobilized;
 
-	public MotorVehicleCrashReport(String medicNum, String seatPosition, String speed, boolean ambulatory,
-			boolean prolongedExtrication, boolean immobilized, String narrative, String sex, String age, String date,
-			String timeOfIncident, String bloodPressure, String heartRate, String spO2, String respiratoryRate,
-			String gcs, String bloodSugar) {
+	public MotorVehicleCrashReport(String medicNum, String date, String timeOfIncident, String narrative, String sex,
+			String age, String bloodPressure, String heartRate, String spO2, String respiratoryRate, String gcs,
+			String bloodSugar, String seatPosition, String speed, boolean ambulatory, boolean prolongedExtrication,
+			boolean immobilized) {
 		super(medicNum, narrative, sex, age, date, timeOfIncident, bloodPressure, heartRate, spO2, respiratoryRate, gcs,
 				bloodSugar);
+		this.seatPosition = seatPosition;
+		this.speed = speed;
+		this.ambulatory = ambulatory;
+		this.prolongedExtrication = prolongedExtrication;
+		this.immobilized = immobilized;
 
 	}
 

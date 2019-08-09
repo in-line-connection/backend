@@ -13,7 +13,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import wcci.inlineconnect.models.TraumaReport;
-import wcci.inlineconnect.repositories.TraumaReportRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -22,8 +21,7 @@ public class JpaWiringTest {
 	@Autowired
 	private TestEntityManager entityManager;
 
-	@Autowired
-	private TraumaReportRepository traumaRepo;
+
 
 	private TraumaReport traumaReport;
 	
