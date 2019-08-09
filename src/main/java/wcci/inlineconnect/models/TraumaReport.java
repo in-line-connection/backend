@@ -1,10 +1,9 @@
 package wcci.inlineconnect.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Lob;
+import javax.persistence.MappedSuperclass;
 
-@Entity
-public class TraumaReport extends Report {
+@MappedSuperclass
+public abstract class TraumaReport extends Report {
 
 
 	private String bloodPressure;
@@ -14,9 +13,11 @@ public class TraumaReport extends Report {
 	private String gcs;
 	private String bloodSugar;
 
-	public TraumaReport(String medicNum, String narrative, String sex, String age, String date, String bloodPressure,
+	public TraumaReport(String medicNum, String date, String timeOfIncident, String narrative, String sex, String age,  String bloodPressure,
 			String heartRate, String spO2, String respiratoryRate, String gcs, String bloodSugar) {
-		super(medicNum, date, narrative,  sex, age);
+
+		super(medicNum, date, timeOfIncident, narrative, sex, age);
+
 		
 		this.bloodPressure = bloodPressure;
 		this.heartRate = heartRate;
@@ -66,8 +67,7 @@ public class TraumaReport extends Report {
 		return medicNum;
 	}
 
-	
-	
+
 //		@Override
 //		public int hashCode() {
 //			final int prime = 31;
