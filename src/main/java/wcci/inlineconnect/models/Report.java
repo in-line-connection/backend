@@ -10,10 +10,8 @@ public abstract class Report {
 	@Id
 	@GeneratedValue
 	protected Long id;
-	
-	
+
 	protected String medicNum;
-	protected String chiefComplaint;
 	protected String date;
 	protected String timeOfIncident;
 	@Lob // may need to be BLOB for voice to text
@@ -21,7 +19,7 @@ public abstract class Report {
 	protected String sex;
 	protected String age;
 
-	public Report(String medicNum, String date,String timeOfIncident, String narrative, String sex, String age) {
+	public Report(String medicNum, String date, String timeOfIncident, String narrative, String sex, String age) {
 		this.medicNum = medicNum;
 		this.date = date;
 		this.timeOfIncident = timeOfIncident;
@@ -55,9 +53,6 @@ public abstract class Report {
 		return medicNum;
 	}
 
-	public String getChiefComplaint() {
-		return chiefComplaint;
-	}
 
 	public String getDate() {
 		return date;
@@ -66,6 +61,5 @@ public abstract class Report {
 	public String getNarrative() {
 		return narrative;
 	}
-	
 
 }

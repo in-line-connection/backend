@@ -13,9 +13,9 @@ public abstract class TraumaReport extends Report {
 	private String gcs;
 	private String bloodSugar;
 
-	public TraumaReport(String medicNum, String narrative, String sex, String age, String date, String timeOfIncident, String bloodPressure,
+	public TraumaReport(String medicNum, String date, String timeOfIncident, String narrative, String sex, String age,  String bloodPressure,
 			String heartRate, String spO2, String respiratoryRate, String gcs, String bloodSugar) {
-		super(medicNum, narrative, date, timeOfIncident, sex, age);
+		super(medicNum, date, timeOfIncident, narrative, sex, age);
 		
 		this.bloodPressure = bloodPressure;
 		this.heartRate = heartRate;
@@ -65,9 +65,6 @@ public abstract class TraumaReport extends Report {
 		return medicNum;
 	}
 
-	public String getChiefComplaint() {
-		return chiefComplaint;
-	}
 //		@Override
 //		public int hashCode() {
 //			final int prime = 31;
