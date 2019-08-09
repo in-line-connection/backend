@@ -61,8 +61,8 @@ public class MotorVehicleCrashReportController {
 		boolean immobilized = json.getBoolean("immobilized");
 
 		System.out.println("test test test");
-		MotorVehicleCrashReport reportToSave = new MotorVehicleCrashReport(medicNum, date, narrative, age, timeOfIncident,
-				sex, BP, HR, SpO2, RespRate, gcs, bloodSugar, speed, seatPosition, ambulatory,
+		MotorVehicleCrashReport reportToSave = new MotorVehicleCrashReport(medicNum, date, timeOfIncident, narrative, sex,
+				age, BP, HR, SpO2, RespRate, gcs, bloodSugar, seatPosition, speed, ambulatory,
 				prolongedExtrication, immobilized);
 		MotorVehicleCrashReport savedReport = motorVehicleCrashRepo.save(reportToSave);
 		response.sendRedirect("/api/MotorVehicleCrash-Reports");

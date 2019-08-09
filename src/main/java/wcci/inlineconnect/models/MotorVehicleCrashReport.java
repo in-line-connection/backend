@@ -15,7 +15,7 @@ public class MotorVehicleCrashReport extends TraumaReport {
 			String age, String bloodPressure, String heartRate, String spO2, String respiratoryRate, String gcs,
 			String bloodSugar, String seatPosition, String speed, boolean ambulatory, boolean prolongedExtrication,
 			boolean immobilized) {
-		super(medicNum, narrative, sex, age, date, timeOfIncident, bloodPressure, heartRate, spO2, respiratoryRate, gcs,
+		super(medicNum, date, timeOfIncident, narrative, sex, age, bloodPressure, heartRate, spO2, respiratoryRate, gcs,
 				bloodSugar);
 		this.seatPosition = seatPosition;
 		this.speed = speed;
