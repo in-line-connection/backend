@@ -15,7 +15,9 @@ public abstract class TraumaReport extends Report {
 
 	public TraumaReport(String medicNum, String date, String timeOfIncident, String narrative, String sex, String age,  String bloodPressure,
 			String heartRate, String spO2, String respiratoryRate, String gcs, String bloodSugar) {
+
 		super(medicNum, date, timeOfIncident, narrative, sex, age);
+
 		
 		this.bloodPressure = bloodPressure;
 		this.heartRate = heartRate;
@@ -64,6 +66,7 @@ public abstract class TraumaReport extends Report {
 	public String getMedicNum() {
 		return medicNum;
 	}
+
 
 //		@Override
 //		public int hashCode() {
