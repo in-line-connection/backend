@@ -30,7 +30,7 @@ public class JpaWiringTest {
 	@Before
 	public void setup() {
 		traumaReport = new TraumaReport("1", "MVC", "Report", "07-07-17", "sex", "age", "bp", "HR", "spO2", "respRate",
-				"motor skill", "sugar");
+				"motor skill");
 		traumaRepo.save(traumaReport);
 		entityManager.flush();
 		entityManager.clear();

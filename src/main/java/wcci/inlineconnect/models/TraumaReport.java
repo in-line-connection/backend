@@ -14,9 +14,9 @@ public class TraumaReport extends Report {
 	private String gcs;
 	private String bloodSugar;
 
-	public TraumaReport(String medicNum, String chiefComplaint, String narrative, String sex, String age, String date, String bloodPressure,
+	public TraumaReport(String medicNum, String narrative, String sex, String age, String date, String bloodPressure,
 			String heartRate, String spO2, String respiratoryRate, String gcs, String bloodSugar) {
-		super(medicNum, chiefComplaint, narrative, date, sex, age);
+		super(medicNum, narrative, date, sex, age);
 		
 		this.bloodPressure = bloodPressure;
 		this.heartRate = heartRate;

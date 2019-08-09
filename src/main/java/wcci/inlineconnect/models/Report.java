@@ -19,7 +19,7 @@ public abstract class Report {
 	protected String sex;
 	protected String age;
 
-	public Report(String medicNum, String chiefComplaint, String date, String narrative, String sex, String age) {
+	public Report(String medicNum, String date, String narrative, String sex, String age) {
 		this.medicNum = medicNum;
 		this.chiefComplaint = chiefComplaint;
 		this.date = date;
