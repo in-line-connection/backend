@@ -12,7 +12,7 @@ public abstract class Report {
 	protected Long id;
 
 	protected String medicNum;
-	protected String chiefComplaint;
+
 	protected String date;
 	@Lob // may need to be BLOB for voice to text
 	protected String narrative;
@@ -21,7 +21,6 @@ public abstract class Report {
 
 	public Report(String medicNum, String date, String narrative, String sex, String age) {
 		this.medicNum = medicNum;
-		this.chiefComplaint = chiefComplaint;
 		this.date = date;
 		this.narrative = narrative;
 		this.sex = sex;
@@ -49,9 +48,6 @@ public abstract class Report {
 		return medicNum;
 	}
 
-	public String getChiefComplaint() {
-		return chiefComplaint;
-	}
 
 	public String getDate() {
 		return date;

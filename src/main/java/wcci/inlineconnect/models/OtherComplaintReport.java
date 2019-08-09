@@ -1,5 +1,9 @@
 package wcci.inlineconnect.models;
 
+import javax.persistence.Entity;
+
+@Entity
+
 public class OtherComplaintReport extends TraumaReport {
 
 	private boolean penetratingTrauma;
@@ -12,7 +16,9 @@ public class OtherComplaintReport extends TraumaReport {
 			String bloodPressure, String heartRate, String spO2, String respiratoryRate, String gcs,
 			String bloodSugar) {
 		super(medicNum, narrative, sex, age, date, bloodPressure, heartRate, spO2, respiratoryRate, gcs, bloodSugar);
-		
+		this.penetratingTrauma = penetratingTrauma;
+		this.bluntForceTrauma = bluntForceTrauma;
+		this.incident = incident;
 	}
 
 	public OtherComplaintReport() {
