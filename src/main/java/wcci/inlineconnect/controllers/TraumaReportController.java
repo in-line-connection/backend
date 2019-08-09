@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import wcci.inlineconnect.models.Report;
 import wcci.inlineconnect.models.TraumaReport;
 import wcci.inlineconnect.repositories.TraumaReportRepository;
+
+//Keeping as example
 
 @CrossOrigin
 @RequestMapping("/api/trauma-reports")
@@ -51,8 +51,8 @@ public class TraumaReportController {
 		String gcs = json.getString("gcs");
 		String bloodSugar = json.getString("bloodSugar");
 		System.out.println("test test test");
-		TraumaReport reportToSave = new TraumaReport(medicNum, chiefComplaint, narrative, sex, age, date, BP, HR, SpO2, RespRate, gcs);
-		TraumaReport savedReport = traumaRepo.save(reportToSave);
+		//TraumaReport reportToSave = new TraumaReport(medicNum, chiefComplaint, narrative, sex, age, date, BP, HR, SpO2, RespRate, gcs);
+		//TraumaReport savedReport = traumaRepo.save(reportToSave);
 		response.sendRedirect("/api/trauma-reports");
 	}
 	

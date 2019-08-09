@@ -26,12 +26,10 @@ public class JpaWiringTest {
 	private TraumaReportRepository traumaRepo;
 
 	private TraumaReport traumaReport;
-
+	
 	@Before
 	public void setup() {
-		traumaReport = new TraumaReport("1", "MVC", "Report", "07-07-17", "sex", "age", "bp", "HR", "spO2", "respRate",
-				"motor skill");
-		traumaRepo.save(traumaReport);
+	
 		entityManager.flush();
 		entityManager.clear();
 	}
@@ -41,18 +39,5 @@ public class JpaWiringTest {
 
 	}
 
-	@Test
-	public void shouldSaveAndLoadTraumaReport() {
-		TraumaReport testReport = traumaRepo.findById(traumaReport.getId()).get();
-		assertThat(testReport.getChiefComplaint(), is(traumaReport.getChiefComplaint()));
-	}
-
-	@Test
-	public void shouldGenerateIdForTraumaReport() {
-		long id = traumaReport.getId();
-		String item = traumaReport.getGCS();
-		System.out.println(item + "Hello");
-		assertThat(id, is(greaterThan(0L)));
-	}
 
 }
