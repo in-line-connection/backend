@@ -1,5 +1,7 @@
 package wcci.inlineconnect.models;
 
+import javax.persistence.Entity;
+
 @Entity
 public class GunShotWoundReport extends TraumaReport {
 	private String location;
