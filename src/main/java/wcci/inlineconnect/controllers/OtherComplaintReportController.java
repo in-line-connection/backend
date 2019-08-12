@@ -63,7 +63,7 @@ public class OtherComplaintReportController {
 					new OtherComplaintReport(penetratingTrauma, bluntForceTrauma, 
 							incident, medicNum, date, timeOfIncident, narrative, sex, age, BP, HR,
 							SpO2, RespRate, gcs, bloodSugar);
-			OtherComplaintReport savedReport = otherComplaintRepo.save(reportToSave);
+			otherComplaintRepo.save(reportToSave);
 			response.sendRedirect("/api/other-reports");
 		}
 		
