@@ -44,34 +44,34 @@ public class MotorVehicleCrashReportWebLayerTest {
 
 	@Before
 	public void setup() {
-
+		mapper = new ObjectMapper();
+		motorVehicleCrashReport = new MotorVehicleCrashReport("", "", "", "", "", "", "", "", "", "", "", "", "", "",
+				true, true, false);
 	}
 
-	@Ignore
 	@Test
 	public void shouldReturnAllTReports() throws Exception {
 		when(crashRepo.findAll()).thenReturn(Collections.singletonList(motorVehicleCrashReport));
-		mockMvc.perform(get("/api/trauma-reports")).andExpect(status().isOk())
+		mockMvc.perform(get("/api/motor-vehicle-crash-reports")).andExpect(status().isOk())
 				.andExpect(content().contentType("application/json;charset=UTF-8")).andExpect(content().json("[{}]"))
-				.andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(motorVehicleCrashReport)), true));
+				.andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(motorVehicleCrashReport)),
+						true));
 	}
 
-	@Ignore
 	@Test
 	public void shouldReturnOneReport() throws Exception {
 		when(crashRepo.findById(1l)).thenReturn(Optional.of(motorVehicleCrashReport));
-		mockMvc.perform(get("/api/trauma-reports/1")).andExpect(status().isOk())
+		mockMvc.perform(get("/api/motor-vehicle-crash-reports/1")).andExpect(status().isOk())
 				.andExpect(content().contentType("application/json;charset=UTF-8")).andExpect(content().json("{}"))
 				.andExpect(content().json(mapper.writeValueAsString(motorVehicleCrashReport), true));
 
 	}
 
-	@Ignore
 	@Test
 	public void shouldAddReport() throws Exception {
 		when(crashRepo.save(any(MotorVehicleCrashReport.class))).thenReturn(motorVehicleCrashReport);
 		when(crashRepo.findAll()).thenReturn(Collections.singletonList(motorVehicleCrashReport));
-		mockMvc.perform(post("/api/trauma-reports").contentType(MediaType.APPLICATION_JSON_UTF8)
+		mockMvc.perform(post("/api/motor-vehicle-crash-reports").contentType(MediaType.APPLICATION_JSON_UTF8)
 				.content(mapper.writeValueAsString(motorVehicleCrashReport))).andExpect(status().is3xxRedirection());
 	}
 

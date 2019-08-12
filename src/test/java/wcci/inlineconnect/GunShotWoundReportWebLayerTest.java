@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.Optional;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +22,11 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import wcci.inlineconnect.controllers.MotorVehicleCrashReportController;
+import wcci.inlineconnect.controllers.GunShotWoundReportController;
 import wcci.inlineconnect.models.GunShotWoundReport;
 import wcci.inlineconnect.repositories.GunShotWoundReportRepository;
 
-@WebMvcTest(MotorVehicleCrashReportController.class)
+@WebMvcTest(GunShotWoundReportController.class)
 @RunWith(SpringRunner.class)
 public class GunShotWoundReportWebLayerTest {
 
@@ -44,35 +43,37 @@ public class GunShotWoundReportWebLayerTest {
 
 	@Before
 	public void setup() {
-
+		gunShotWoundReport = new GunShotWoundReport("", "", "", "", "", "", "", "", "", "", "", "", "", "", true, "",
+				false);
+		mapper = new ObjectMapper();
 	}
 
-	@Ignore
 	@Test
 	public void shouldReturnAllTReports() throws Exception {
 		when(gunRepo.findAll()).thenReturn(Collections.singletonList(gunShotWoundReport));
-		mockMvc.perform(get("/api/trauma-reports")).andExpect(status().isOk())
+		mockMvc.perform(get("/api/gun-shot-wound-reports")).andExpect(status().isOk())
 				.andExpect(content().contentType("application/json;charset=UTF-8")).andExpect(content().json("[{}]"))
-				.andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(gunShotWoundReport)), true));
+				.andExpect(
+						content().json(mapper.writeValueAsString(Collections.singletonList(gunShotWoundReport)), true));
 	}
 
-	@Ignore
 	@Test
 	public void shouldReturnOneReport() throws Exception {
 		when(gunRepo.findById(1l)).thenReturn(Optional.of(gunShotWoundReport));
-		mockMvc.perform(get("/api/trauma-reports/1")).andExpect(status().isOk())
+		mockMvc.perform(get("/api/gun-shot-wound-reports/1")).andExpect(status().isOk())
 				.andExpect(content().contentType("application/json;charset=UTF-8")).andExpect(content().json("{}"))
 				.andExpect(content().json(mapper.writeValueAsString(gunShotWoundReport), true));
 
 	}
 
-	@Ignore
 	@Test
 	public void shouldAddReport() throws Exception {
 		when(gunRepo.save(any(GunShotWoundReport.class))).thenReturn(gunShotWoundReport);
 		when(gunRepo.findAll()).thenReturn(Collections.singletonList(gunShotWoundReport));
-		mockMvc.perform(post("/api/trauma-reports").contentType(MediaType.APPLICATION_JSON_UTF8)
-				.content(mapper.writeValueAsString(gunShotWoundReport))).andExpect(status().is3xxRedirection());
+		String gswJSON = mapper.writeValueAsString(gunShotWoundReport);
+		mockMvc.perform(
+				post("/api/gun-shot-wound-reports").contentType(MediaType.APPLICATION_JSON_UTF8).content(gswJSON))
+				.andExpect(status().is3xxRedirection());
 	}
 
 }
