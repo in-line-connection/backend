@@ -24,7 +24,7 @@ public class FallReport extends TraumaReport {
 		
 	}
 
-	private FallReport() {
+	public FallReport() {
 		
 	}
 	
