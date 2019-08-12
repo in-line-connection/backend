@@ -12,10 +12,10 @@ public class OtherComplaintReport extends TraumaReport {
 	
 	
 
-	public OtherComplaintReport(boolean penetratingTrauma, boolean bluntForceTrauma, String incident, String medicNum, String narrative, String sex, String age, String date,
-			String bloodPressure, String heartRate, String spO2, String respiratoryRate, String gcs,
-			String bloodSugar) {
-		super(medicNum, narrative, sex, age, date, bloodPressure, heartRate, spO2, respiratoryRate, gcs, bloodSugar);
+	public OtherComplaintReport(boolean penetratingTrauma, boolean bluntForceTrauma, String incident, String medicNum, String date, String timeOfIncident, String narrative, String sex, String age,  String bloodPressure,
+			String heartRate, String spO2, String respiratoryRate, String gcs, String bloodSugar) {
+		super(medicNum, date, timeOfIncident, narrative, sex, age, bloodPressure,
+				heartRate, spO2, respiratoryRate, gcs, bloodSugar);
 		this.penetratingTrauma = penetratingTrauma;
 		this.bluntForceTrauma = bluntForceTrauma;
 		this.incident = incident;
