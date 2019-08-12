@@ -14,32 +14,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import wcci.inlineconnect.models.MotorVehicleCrashReport;
+import wcci.inlineconnect.models.GunShotWoundReport;
 import wcci.inlineconnect.models.Report;
-import wcci.inlineconnect.repositories.MotorVehicleCrashReportRepository;
+import wcci.inlineconnect.repositories.GunShotWoundReportRepository;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/motor-vehicle-crash-reports")
-public class MotorVehicleCrashReportController {
-	
+@RequestMapping("/api/gun-shot-wound-reports")
+public class GunShotWoundReportController {
 	@Autowired
-	private MotorVehicleCrashReportRepository motorVehicleCrashRepo;
+	private GunShotWoundReportRepository gunShotWoundRepo;
 
 	@GetMapping({ "/", "" })
-	public Iterable<MotorVehicleCrashReport> findAllReports() {
-		return motorVehicleCrashRepo.findAll();
+	public Iterable<GunShotWoundReport> findAllReports() {
+		return gunShotWoundRepo.findAll();
 	}
 
 	@GetMapping({ "/{id}", "/{id}/" })
 	public Report findSingleReports(@PathVariable Long id) {
-		return motorVehicleCrashRepo.findById(id).get();
+		return gunShotWoundRepo.findById(id).get();
 	}
 
 	@PostMapping({ "", "/" })
-	public void createTruamaReport(@RequestBody MotorVehicleCrashReport reportToSave, HttpServletResponse response)
+	public void createTruamaReport(@RequestBody GunShotWoundReport reportToSave, HttpServletResponse response)
 			throws JSONException, IOException {
-		motorVehicleCrashRepo.save(reportToSave);
-		response.sendRedirect("/api/motor-vehicle-crash-reports");
+		gunShotWoundRepo.save(reportToSave);
+		response.sendRedirect("/api/gun-shot-wound-reports");
 	}
 }
