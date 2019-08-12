@@ -11,7 +11,7 @@ public class FallReport extends TraumaReport {
 	private boolean ambulatory;
 	private boolean immobilized;
 	
-	private FallReport(boolean withInjury, boolean lossOfConciousness, String height, boolean ambulatory, boolean immobilized, String medicNum, String date, String timeOfIncident, String narrative, String sex, String age,  String bloodPressure,
+	public FallReport(boolean withInjury, boolean lossOfConciousness, String height, boolean ambulatory, boolean immobilized, String medicNum, String date, String timeOfIncident, String narrative, String sex, String age,  String bloodPressure,
 			String heartRate, String spO2, String respiratoryRate, String gcs, String bloodSugar) {
 
 		super(medicNum, date, timeOfIncident, narrative, sex, age, bloodPressure,
