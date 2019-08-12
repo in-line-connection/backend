@@ -51,6 +51,7 @@ public class OtherComplaintReportController {
 			String sex = json.getString("sex");
 			String age = json.getString("age");
 			String date = json.getString("date");
+			String timeOfIncident = json.getString("timeOfIncident");
 			String BP = json.getString("bloodPressure");
 			String HR = json.getString("heartRate");
 			String SpO2 = json.getString("spO2");
@@ -60,9 +61,9 @@ public class OtherComplaintReportController {
 			System.out.println("test test test");
 			OtherComplaintReport reportToSave = 
 					new OtherComplaintReport(penetratingTrauma, bluntForceTrauma, 
-							incident, medicNum, narrative, sex, age, date, BP, HR,
+							incident, medicNum, date, timeOfIncident, narrative, sex, age, BP, HR,
 							SpO2, RespRate, gcs, bloodSugar);
-			OtherComplaintReport savedReport = otherComplaintRepo.save(reportToSave);
+			otherComplaintRepo.save(reportToSave);
 			response.sendRedirect("/api/other-reports");
 		}
 		
