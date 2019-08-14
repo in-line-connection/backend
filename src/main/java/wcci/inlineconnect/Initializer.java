@@ -44,6 +44,11 @@ public class Initializer implements CommandLineRunner {
 		OtherComplaintReport report4 = new OtherComplaintReport(false, true, "blunt force trauma to face", "medic 12 LCEMS", "11-12-2018", "1150", "medic 21 dispatched to residence for 45 y/o m patient. patient feel and struck his face on the floor", "male","45", "140/80",
 				"80", "99%","20", "12", "30");
 		otherRepo.save(report4);
+		
+		GunShotWoundReport report6 = new GunShotWoundReport("medic 11 LCEMS", "09-01-2019", "1006", "Medic 21 dispatched to residence for GSW victim. 44 year old female patient. GSW to upper right forearm", "F",
+			"44", "60/40", "56", "80%", "14", "3",
+			"n/a", "right forearm", "1", true, "glock", false);
+		gswRepo.save(report6);
 		System.out.println("RUNNING INITIALIZER");
 
 
