@@ -4,46 +4,54 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import wcci.inlineconnect.models.FallReport;
+
+import wcci.inlineconnect.models.GunShotWoundReport;
+import wcci.inlineconnect.models.MotorVehicleCrashReport;
+import wcci.inlineconnect.models.OtherComplaintReport;
+import wcci.inlineconnect.repositories.FallReportRepository;
+import wcci.inlineconnect.repositories.GunShotWoundReportRepository;
+import wcci.inlineconnect.repositories.MotorVehicleCrashReportRepository;
+import wcci.inlineconnect.repositories.OtherComplaintReportRepository;
+
+
 @Component
 public class Initializer implements CommandLineRunner {
-
 	@Autowired
-	ReportRepository reportRepo;
-
+	private FallReportRepository fallRepo;
+	@Autowired
+	private GunShotWoundReportRepository gswRepo;
+	@Autowired
+	private MotorVehicleCrashReportRepository mvcRepo;
+	@Autowired
+	private OtherComplaintReportRepository otherRepo;
+	
 	@Override
 	public void run(String... args) throws Exception {
+		
 
-		Report report1 = new Report("01", "MI",
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-				"120/80", "126", "95", "16", "15", "80");
-
-		reportRepo.save(report1);
-
-		Report report2 = new Report("01", "MVC",
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-				"140/90", "45", "99", "19", "10", "33");
-
-		reportRepo.save(report2);
-
-		Report report3 = new Report("01", "Fall",
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-				"88/50", "66", "97", "21", "5", "73");
-
-		reportRepo.save(report3);
-
-		Report report4 = new Report("01", "lll",
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-				"121/82", "94", "96", "32", "7", "80");
-
-		reportRepo.save(report4);
-
-		Report report5 = new Report("01", "kpkp",
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-				"117/76", "54", "100", "4", "13", "76");
-
-		reportRepo.save(report5);
-
+		FallReport report1 = new FallReport(false, false, "standing to ground", true, false, "Medic 51 LCEMS","08-15-2019" , "1520","Medic 51 LCEMS disptached to walmart of Ironton for 79 y/o M/ patient.Patient was standing at checkout and tripped over his cane. Patient fell to ground stricking his arm on the counter. Upon arrival patient was alertx4 and denied LOC. Patients vitals obtained, within normal limites. Pupils pearrl and equal. GSC normal, range of motion present, PMS presentx4. Patients arm without injury. No pertent medical hx. Patient denied treatment/ transport on scene. Patient stable and alert to all standing. Refusel signed and call released at 1549. Medic 51 back in service", "Male", "79", "145/65", "75", "98%", "18", "15", "75");
+		fallRepo.save(report1);
+		
+		MotorVehicleCrashReport report2 = new MotorVehicleCrashReport("Medic 21 LCEMS", "07-11-2018", "1610", "MVC on county rd 1 mile marker 3. Car slide off the road", "F",
+				"20", "110/64", "69", "100%", "16", "15",
+				"n/a", "driver", "65", true, false, false);
+		mvcRepo.save(report2);
+		GunShotWoundReport report3 = new GunShotWoundReport("Medic 21 LCEMS", "08-01-2019", "1006", "Medic 21 dispatched to residence for GSW victim. 21 year old female patient. GSW to upper right forearm", "F",
+			"21", "120/60", "70", "99", "19", "15",
+			"n/a", "right forearm", "1", true, "glock", false);
+		gswRepo.save(report3);
+		OtherComplaintReport report4 = new OtherComplaintReport(false, true, "blunt force trauma to face", "medic 12 LCEMS", "11-12-2018", "1150", "medic 21 dispatched to residence for 45 y/o m patient. patient feel and struck his face on the floor", "male","45", "140/80",
+				"80", "99%","20", "12", "30");
+		otherRepo.save(report4);
+		
+		GunShotWoundReport report6 = new GunShotWoundReport("Medic 11 LCEMS", "09-01-2019", "1006", "Medic 21 dispatched to residence for GSW victim. 44 year old female patient. GSW to upper right forearm", "F",
+			"44", "60/40", "56", "80%", "14", "3",
+			"n/a", "right forearm", "1", true, "Shot Gun", false);
+		gswRepo.save(report6);
 		System.out.println("RUNNING INITIALIZER");
 
+
+	 
 	}
 }
