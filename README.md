@@ -3,6 +3,6 @@ This is a web application designed for use by hospitals/ EMS first responders to
 
 ## Installation
 1. Clone repository
-1. Run gradle eclipse from the project root
-1. Import into Eclipse
+1. Run gradle eclipse in your terminal from the project root
+1. Import project into Eclipse
 1. Run application file
