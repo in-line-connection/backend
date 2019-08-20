@@ -2,7 +2,7 @@
 This is a web application designed for use by hospitals/ EMS first responders to streamline the reporting and receiving process of an emergency.
 
 ## Installation
-Clone repository
-Run gradle eclipse from the project root
-Import into Eclipse
-Run application file
+1. Clone repository
+1. Run gradle eclipse from the project root
+1. Import into Eclipse
+1. Run application file
